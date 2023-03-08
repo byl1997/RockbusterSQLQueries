@@ -1,6 +1,6 @@
-Here are some SQL querys using a common table expression.
+## Here are some SQL querys using a common table expression.
 
-This CTE was used to find the average amount paid by the top 5 customers in the top 10 cities.
+#### This CTE was used to find the average amount paid by the top 5 customers in the top 10 cities.
 
 with average_paid (customer_id, first_name, last_name, country, city) as
 (select B.customer_id, B.first_name, B.last_name, E. country,D.city, sum (A.amount) as 
@@ -18,12 +18,9 @@ Limit 5)
 select avg(total_amount_paid_to_rockbuster) as average 
 from average_paid
 
-
-
-This CTE was used to find the top 4 countreis with the highest top customer count and total customer
+####This CTE was used to find the top 4 countreis with the highest top customer count and total customer
 count.
 
-﻿
 with top_5_customers (customer_id, first_name, last_name, country, city) as
   (select B.customer_id, B. first_name, B.last_name, E. country,D.city, sum (A. amount) 
   as total amount paid_to_rockbuster 
