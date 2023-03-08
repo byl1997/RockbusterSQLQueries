@@ -1,0 +1,40 @@
+Subqueries 
+
+Used to find the average amount paid by the top 5 customers
+select avg(total_amount_paid_to_rockbuster) as average 
+from
+(select B.customer_id,B.first_name, B.last_name, E. country,D.city, sum (A. amount) as total amount paid_to_rockbuster 
+from payment A
+inner join customer B on A.customer_id = B.customer_id
+inner join address C on B.address_id = C.address_id
+inner join city D on C.city_id = D.city_id
+inner join country E on D.country_id=E.country_id
+where city in ('Auora', 'Atlixco', 'Xintal', 'Adoni', 'Dhule (Dhulia)', 'Kurashiki', 'Pingxiang',
+'Sivas', 'Celaya', 'So Leopoldo')
+group by B.customer_id,B.first_name, B.last_name, E. country,D.city
+order by (total_amount_paid_to_rockbuster) desc
+limit 5) as total_amount_paid
+
+Used to find how many of the top 5 customers are based within each country
+select E.country,
+  count (distinct B.customer_id) as all customer_count,
+  count (distinct top_5_customers.customer_id) as top_customer_count
+  from country E
+  inner join city D on E. country_1d-D.country_id
+  inner join address C on D.city_id=c.city_id
+  inner join customer B on C.address_id=8.address_id
+  left join (select B.customer_id, B. first_name, B.last_name, E. country, D.city, sum (A. amount) as total_amount_paid_to_rockbus 
+from payment A
+  inner join customer B on A.customer_id = B.customer_id
+  inner join address C on B.address_id C.address_id
+  inner join city D on C.city_id = D.city_id
+  inner join country E on D.country_fd=E.country_id
+where city in ('Auora', 'Atlixco', 'Xintaf', 'Adoni', 'Dhule (Dhulia)', 'Kurashiki', 'Pingxiang',
+'Sivas', 'Celaya', 'So Leopoldo')
+group by B.customer_id,B.first_name, B.last_name, E. country,D.city
+order by (total amount paid_to_rockbuster) desc
+Limit 5) as top_5_customers
+on E. country top_5_customers.country
+group by E. country
+order by top_customer_count desc
+Limit 5
