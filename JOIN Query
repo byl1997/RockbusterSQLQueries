@@ -1,0 +1,35 @@
+These SQL querys contains multiple joins to find our results
+
+Used to find total customers from the top 10 countires
+select D.country,
+  COUNT (customer_id) as total_customers
+From customer A
+inner join address B on A. address_id = B. address_id
+inner join city C on B. inner join country D on group by country
+city_id = C. city_id
+C. country_id = D. country_id
+order by total_customers desc Limit 10
+
+Used to find the top 10 cities within the top 10 countries
+select C.city, D. country,
+  COUNT (customer_id) as total_customers
+From customer A
+inner join address B on A. address_id B. address_id
+inner join city C on B. city_id = C. city_id
+inner join country D on C. country_id = D. country_id
+where country in ('India', 'China', 'United States', 'Japan', 'Mexico', 'Brazil', 'Russian Federation', 'Philippines'
+                  ,'Turkey', 'Indonesia')
+group by city, country
+order by total customers desc
+Limit 10
+
+Used to find the top 5 customers in the top 10 cities who paid the highest total amounts
+select B.customer_id,B.first_name, B.last_name, E. country,D.city, sum (A. amount) as total amount_paid from payment A
+inner join customer B on A.customer_id = B.customer_id
+inner join address C on B.address_id = C.address_id
+inner join city D on C.city_id = D.city_id
+inner join country E on D.country_id = E. country_id
+where city in ('Auora', 'Atlixco', 'Xintai', 'Adoni', 'Dhule (Dhulia)', 'Kurashiki', 'Pingxiang', 'Sivas','Celaya', 'So Leopoldo')
+group by B.customer_id,B.first_name, B.last_name, E. country,D.city
+order by (total_amount_paid) desc
+Limit 5
