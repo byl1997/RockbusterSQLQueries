@@ -9,4 +9,4 @@ The relational database used consisted of 17 different tables containing data on
 
 [Full Data Set](http://www.postgresqltutorial.com/wp-content/uploads/2019/05/dvdrental.zip)
 
-[Tableau Visualization](https://public.tableau.com/app/profile/david.byl/viz/Finalprojectwfixedrankingtableandfixeddeathrate/Story)
+[Tableau Visualization](https://public.tableau.com/app/profile/david.byl)
